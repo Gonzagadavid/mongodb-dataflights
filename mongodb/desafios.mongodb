@@ -21,6 +21,9 @@ use('dataFlights');
 db.voos.find({}, { vooId: true, _id: false }).skip(9).limit(3);
 
 // 6 - Retorne apenas os campos empresa.sigla, empresa.nome e passageiros do voo com o campo vooId igual a 756807.
+use('dataFlights');
+db.voos.find({ vooId: 756807 }, { _id: false, 'empresa.sigla': true, 'empresa.nome': true, passageiros: true });
+
 // 7 - Retorne a quantidade de voos em que o ano seja menor do que 2017.
 // 8 - Retorne a quantidade de voos em que o ano seja maior do que 2016.
 // 9 - Retorne a quantidade de voos entre os anos de 2017 e 2018.
