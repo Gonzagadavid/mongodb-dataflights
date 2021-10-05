@@ -9,6 +9,9 @@ use('dataFlights');
 db.voos.find({ 'empresa.nome': 'AZUL'}).limit(10);
 
 // 3 - Retorne a quantidade de voos da empresa AZUL.
+use('dataFlights');
+db.voos.find({ 'empresa.nome': 'AZUL'}).count();
+
 // 4 - Retorne a quantidade de voos da empresa GOL.
 // 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos.
 // 6 - Retorne apenas os campos empresa.sigla, empresa.nome e passageiros do voo com o campo vooId igual a 756807.
