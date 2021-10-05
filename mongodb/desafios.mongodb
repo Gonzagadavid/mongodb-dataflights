@@ -64,9 +64,12 @@ db.voos.find(
 
 // 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais não seja igual a ESTADOS UNIDOS.
 use('dataFlights');
-db.voos.find({ 'aeroportoDestino.pais': { $ne: 'ESTADOS UNIDOS' } }).count()
+db.voos.find({ 'aeroportoDestino.pais': { $ne: 'ESTADOS UNIDOS' } }).count();
 
 // 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais seja igual a BRASIL, ARGENTINA ou CHILE.
+use('dataFlights');
+db.voos.find({ 'aeroportoDestino.pais': { $in: ['BRASIL', 'ARGENTINA', 'CHILE'] } }).count();
+
 // 13 - Retorne a quantidade de documentos em que o campo aeroportoDestino.continente não seja igual a EUROPA, ÁSIA e OCEANIA.
 // 14 - Retorne o total de voos em que o país de origem não seja BRASIL.
 // 15 - Retorne o total de voos com mais de 20 decolagens.
