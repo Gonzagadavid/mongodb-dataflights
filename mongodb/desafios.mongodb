@@ -171,6 +171,12 @@ db.voos.findOne(
 );
 
 // 25 - Remova todos os voos da empresa AZUL em que a quantidade de combustível seja menor do que 400. Informe a quantidade de documentos removidos.
+use('dataFlights');
+db.voos.deleteMany({
+  litrosCombustivel: { $lt: 400 },
+  'empresa.nome': 'AZUL'
+});
+
 // 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10. Informe a quantidade de documentos removidos.
 // 27 - Retorne a quantidade total de voos de natureza Doméstica que a empresa PASSAREDO possui, via uso de uma nova coleção chamada resumoVoos.
 // Ou seja, a coleção resumoVoos conterá documentos onde cada um indica para cada empresa a quantidade total de voos que ela possui de natureza Doméstica.
