@@ -33,6 +33,9 @@ use('dataFlights');
 db.voos.find({ ano: { $gt: 2016}}).count();
 
 // 9 - Retorne a quantidade de voos entre os anos de 2017 e 2018.
+use('dataFlights');
+db.voos.find({ ano: { $gte: 2017, $lte: 2018 }}).count();
+
 // 10 - Retorne apenas os 10 primeiros documentos com voos da empresa GOL do ano de 2017. Exiba apenas os campos vooId, empresa.nome, aeroportoOrigem.nome, aeroportoDestino.nome, mes e ano.
 // 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais não seja igual a ESTADOS UNIDOS.
 // 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais seja igual a BRASIL, ARGENTINA ou CHILE.
