@@ -153,6 +153,23 @@ db.voos.findOne(
 );
 
 // 24 - Retorne o vooId, empresa.nome e litrosCombustivel do primeiro voo em que litrosCombustivel não seja maior do que 600 e a empresa não seja GOL ou AZUL, e o campo litrosCombustivel exista.
+use('dataFlights');
+db.voos.findOne(
+  { 
+    $and: [
+      { litrosCombustivel: { $exists: true } },
+      { litrosCombustivel: { $lte: 600 } },
+      { 'empresa.nome': { $nin: ['GOL', 'AZUL'] }}
+    ]
+  },
+  { 
+    vooId: true,
+    _id: false,
+    litrosCombustivel: true,
+    'empresa.nome': true
+  }
+);
+
 // 25 - Remova todos os voos da empresa AZUL em que a quantidade de combustível seja menor do que 400. Informe a quantidade de documentos removidos.
 // 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10. Informe a quantidade de documentos removidos.
 // 27 - Retorne a quantidade total de voos de natureza Doméstica que a empresa PASSAREDO possui, via uso de uma nova coleção chamada resumoVoos.
