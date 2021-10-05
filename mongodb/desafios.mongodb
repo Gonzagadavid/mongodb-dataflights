@@ -91,6 +91,17 @@ use('dataFlights');
 db.voos.find({ natureza: 'Doméstica' }).count();
 
 // 18 - Retorne o vooId, mes e ano do primeiro voo com mais de 7000 passageiros pagos.
+use('dataFlights');
+db.voos.findOne(
+  { 'passageiros.pagos': { $gt: 7000 } }, 
+  { 
+    _id: false,
+    vooId: true,
+    mes: true,
+    ano: true
+  }
+);
+
 // 19 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel exista.
 // 20 - Retorne o vooId do primeiro voo em que o campo rtk não exista.
 // 21 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel seja maior ou igual a 1000.
