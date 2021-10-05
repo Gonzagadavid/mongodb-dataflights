@@ -1,0 +1,1 @@
+db.voos.find().count();
