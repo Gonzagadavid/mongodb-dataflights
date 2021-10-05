@@ -28,8 +28,8 @@ db.voos.find(
   }, 
   { 
     _id: false,
-    "empresa.sigla": true,
-    "empresa.nome": true,
+    'empresa.sigla': true,
+    'empresa.nome': true,
     passageiros: true, 
   },
 );
@@ -58,7 +58,7 @@ db.voos.find(
     'aeroportoOrigem.nome': true,
     'aeroportoDestino.nome': true,
     mes: true,
-    ano: true 
+    ano: true,
     }
 ).limit(10);
 
@@ -98,7 +98,7 @@ db.voos.findOne(
     _id: false,
     vooId: true,
     mes: true,
-    ano: true
+    ano: true,
   }
 );
 
@@ -133,7 +133,7 @@ db.voos.findOne(
       { 'aeroportoDestino.sigla' : 'KJFK'}
     ]
   },
-  { vooId: true, _id: false }
+  { vooId: true, _id: false },
 );
 
 // 23 - Retorne o vooId e litrosCombustivel do primeiro voo em que o campo litrosCombustivel não seja maior do que 1000 e o campo litrosCombustivel exista.
@@ -148,7 +148,7 @@ db.voos.findOne(
   { 
     vooId: true,
     _id: false,
-    litrosCombustivel: true 
+    litrosCombustivel: true,
   }
 );
 
@@ -166,7 +166,7 @@ db.voos.findOne(
     vooId: true,
     _id: false,
     litrosCombustivel: true,
-    'empresa.nome': true
+    'empresa.nome': true,
   }
 );
 
@@ -174,10 +174,20 @@ db.voos.findOne(
 use('dataFlights');
 db.voos.deleteMany({
   litrosCombustivel: { $lt: 400 },
-  'empresa.nome': 'AZUL'
+  'empresa.nome': 'AZUL',
 });
 
 // 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10. Informe a quantidade de documentos removidos.
+use('dataFlights');
+db.voos.deleteMany({
+  $and: [
+    { 'empresa.nome': 'GOL' },
+    { 'passageiros.pagos': { $gte: 5, $lte: 10 } },
+  ],
+});
+
+
+
 // 27 - Retorne a quantidade total de voos de natureza Doméstica que a empresa PASSAREDO possui, via uso de uma nova coleção chamada resumoVoos.
 // Ou seja, a coleção resumoVoos conterá documentos onde cada um indica para cada empresa a quantidade total de voos que ela possui de natureza Doméstica.
 
