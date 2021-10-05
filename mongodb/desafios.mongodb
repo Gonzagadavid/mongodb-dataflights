@@ -22,7 +22,18 @@ db.voos.find({}, { vooId: true, _id: false }).skip(9).limit(3);
 
 // 6 - Retorne apenas os campos empresa.sigla, empresa.nome e passageiros do voo com o campo vooId igual a 756807.
 use('dataFlights');
-db.voos.find({ vooId: 756807 }, { _id: false, 'empresa.sigla': true, 'empresa.nome': true, passageiros: true });
+db.voos.find(
+  { 
+    vooId: 756807, 
+  }, 
+  { 
+    _id: false,
+    "empresa.sigla": true,
+    "empresa.nome": true,
+    passageiros: true, 
+  },
+);
+
 
 // 7 - Retorne a quantidade de voos em que o ano seja menor do que 2017.
 use('dataFlights');
@@ -37,6 +48,20 @@ use('dataFlights');
 db.voos.find({ ano: { $gte: 2017, $lte: 2018 }}).count();
 
 // 10 - Retorne apenas os 10 primeiros documentos com voos da empresa GOL do ano de 2017. Exiba apenas os campos vooId, empresa.nome, aeroportoOrigem.nome, aeroportoDestino.nome, mes e ano.
+use('dataFlights');
+db.voos.find(
+  { 'empresa.nome': 'GOL', ano: 2017 }, 
+  { _
+    id: false,
+    vooId: true,
+    'empresa.nome': true,
+    'aeroportoOrigem.nome': true,
+    'aeroportoDestino.nome': true,
+    mes: true,
+    ano: true 
+    }
+).limit(10);
+
 // 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais não seja igual a ESTADOS UNIDOS.
 // 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais seja igual a BRASIL, ARGENTINA ou CHILE.
 // 13 - Retorne a quantidade de documentos em que o campo aeroportoDestino.continente não seja igual a EUROPA, ÁSIA e OCEANIA.
