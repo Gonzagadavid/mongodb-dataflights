@@ -103,6 +103,12 @@ db.voos.findOne(
 );
 
 // 19 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel exista.
+use('dataFlights');
+db.voos.findOne(
+  { litrosCombustivel : {$exists: true } },
+  { vooId: true, _id: false }
+);
+
 // 20 - Retorne o vooId do primeiro voo em que o campo rtk não exista.
 // 21 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel seja maior ou igual a 1000.
 // 22 - Retorne o vooId do primeiro voo em que a empresa seja DELTA AIRLINES ou AMERICAN AIRLINES, a sigla do aeroporto de origem seja SBGR e a sigla do aeroporto de destino seja KJFK.
